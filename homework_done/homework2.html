@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts search</title>
+    <script src="../libs/react.js"></script>
+    <script src="../libs/react-dom.js"></script>
+    <script src="../libs/browser.js"></script>
+</head>
+<body>
+
+	<div id="content"></div>
+
+	<script type="text/babel">
+
+		var Greeting = React.createClass({
+            render: function() {
+                return (
+                	<h2>Hello {this.props.displayedName}!</h2>
+                );
+            }
+        });
+
+		var Greetings = React.createClass({
+            getInitialState: function () {
+                return{
+                    displayedName: 'Stranger'
+                }
+            },
+
+			handleNameChange(event) {
+			    this.setState({
+                    displayedName: event.target.value
+			    });
+			},
+
+			render: function() {
+				return (
+					<div>
+						<ul>
+							<li>
+								<input type="text" className='setName' onChange={this.handleNameChange} />
+								
+							</li>
+							<li>
+                        		<Greeting displayedName={this.state.displayedName} />
+							</li>
+						</ul>
+                    </div>
+				);
+			}
+		});
+
+		ReactDOM.render(
+			<Greetings />,
+			document.getElementById('content')
+		);
+	</script>
+</body>
+</html>
