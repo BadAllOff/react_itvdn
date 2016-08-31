@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts search</title>
+    <script src="../libs/react.js"></script>
+    <script src="../libs/react-dom.js"></script>
+    <script src="../libs/browser.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id='content'></div>
+
+<script type="text/babel">
+
+    var CONTACTS = [
+        {
+            id: 1,
+            name: 'Darth Vader',
+            phoneNumber: '+250966666666',
+            image: '../avatars/pikachu.png',
+            hobby: 'Playing the war',
+            sex: 'Male'
+        }, {
+            id: 2,
+            name: 'Princess Leia',
+            phoneNumber: '+250966344466',
+            image: '../avatars/snorlax.png',
+            hobby: 'Playing the Warrior',
+            sex: 'Female'
+        }, {
+            id: 3,
+            name: 'Luke Skywalker',
+            phoneNumber: '+250976654433',
+            image: '../avatars/user.png',
+            hobby: 'Playing the idiot',
+            sex: 'Male'
+        }, {
+            id: 4,
+            name: 'Chewbacca',
+            phoneNumber: '+250456784935',
+            image: '../avatars/user-1.png',
+            hobby: 'Playing the ... just playing',
+            sex: 'Male'
+        }
+    ];
+
+    var Contact = React.createClass({
+        getInitialState() {
+            return {
+                shouldHide: true
+            };
+        },
+
+        handleShowInfo: function (event) {
+            var shouldHide = true;
+
+            this.setState({
+                shouldHide: !this.state.shouldHide
+            });
+        },
+
+        render: function() {
+            return (
+                    <li className="contact" onClick={this.handleShowInfo}>
+                        <img className="contact-image" src={this.props.image} width="60px" height="60px" />
+                        <div className="contact-info">
+                            <div className="contact-name"> {this.props.name} </div>
+                            <div className="contact-number"> {this.props.phoneNumber} </div>
+                            <div className={this.state.shouldHide ? 'hidden' : ''} >
+                                <div className="contact-hobby"> {this.props.hobby} </div>
+                                <div className="contact-sex"> {this.props.sex} </div>
+                            </div>
+                        </div>
+                    </li>
+            );
+        }
+    });
+
+    var ContactsList = React.createClass({
+        getInitialState: function() {
+            return {
+                displayedContacts: CONTACTS
+            };
+        },
+
+        handleSearch: function(event) {
+            var searchQuery = event.target.value.toLowerCase();
+            var displayedContacts = CONTACTS.filter(function(el) {
+                var searchValue = el.name.toLowerCase();
+                return searchValue.indexOf(searchQuery) !== -1;
+            });
+
+            this.setState({
+                displayedContacts: displayedContacts
+            });
+        },
+
+        render: function() {
+            return (
+                    <div className="contacts">
+                        <input type="text" className="search-field" onChange={this.handleSearch} />
+                        <ul className="contacts-list">
+                            {
+                                this.state.displayedContacts.map(function(el) {
+                                    return <Contact
+                                            key={el.id}
+                                            name={el.name}
+                                            phoneNumber={el.phoneNumber}
+                                            image={el.image}
+                                            hobby={el.hobby}
+                                            sex={el.sex}
+                                    />;
+                                })
+                            }
+                        </ul>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <ContactsList />,
+            document.getElementById("content")
+    );
+
+</script>
+</body>
+</html>
