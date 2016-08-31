@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts search</title>
+    <script src="../libs/react.js"></script>
+    <script src="../libs/react-dom.js"></script>
+    <script src="../libs/browser.js"></script>
+</head>
+<body>
+
+<div id="content"></div>
+
+<script type="text/babel">
+
+    var Calculated = React.createClass({
+        render: function() {
+            return (
+                    <h2>Result of calculation is {this.props.calculatedNumber}!</h2>
+            );
+        }
+    });
+
+    var Calculator = React.createClass({
+        getInitialState: function () {
+            return{
+                calculatedNumber: '""'
+            }
+        },
+
+        CalculateNumbers(event) {
+            var num1 = parseInt(this.refs.num1.value.trim());
+            var num2 = parseInt(this.refs.num2.value.trim());
+            var sign = event.target.value;
+            var result = 0 ;
+
+            if(sign == '+')
+            {
+                result = num1 + num2
+            }else if(sign == '-'){
+                result = num1 - num2
+            }else{
+                result = num1 * num2
+            }
+
+            this.setState({
+                calculatedNumber: result
+            });
+        },
+
+        render: function() {
+            return (
+                    <div>
+                        <ul>
+                            <li>
+                                <input type="number" ref="num1" className='num1' />
+                            </li>
+                            <li>
+                                <input type="number" ref="num2" className='num2' />
+                            </li>
+
+                            <li>
+                                <button onClick={this.CalculateNumbers} value="+"> + </button>
+                                <button onClick={this.CalculateNumbers} value="-"> - </button>
+                                <button onClick={this.CalculateNumbers} value="*"> * </button>
+                            </li>
+                        </ul>
+                        <div>
+                            <Calculated calculatedNumber={this.state.calculatedNumber} />
+                        </div>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <Calculator />,
+            document.getElementById('content')
+    );
+</script>
+</body>
+</html>
