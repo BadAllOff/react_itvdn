@@ -14,7 +14,9 @@
     var Timer = React.createClass({
         getInitialState: function() {
             return {
-                seconds: 0
+                isPaused: true,
+                seconds: 0,
+                buttonName: 'Пауза'
             };
         },
 
@@ -30,6 +32,18 @@
             this.setState({ seconds: 0 });
         },
 
+        toggleTimer: function(event) {
+            this.setState({ isPaused: !this.state.isPaused });
+            if(this.state.isPaused)
+            {
+                clearInterval(this.timer);
+                this.setState({ buttonName: 'Старт' });
+            }else{
+                this.timer = setInterval(this.tick, 1000);
+                this.setState({ buttonName: 'Пауза' });
+            }
+        },
+
         componentWillUnmount: function() {
             clearInterval(this.timer);
         },
@@ -39,7 +53,7 @@
                     <div>
                         <h4> Уже прошло {this.state.seconds} секунд </h4>
                         <p>
-                            <button>Старт</button>
+                            <button onClick={this.toggleTimer} >{this.state.buttonName}</button>
                             <button onClick={this.resetTimer} >Восстановить</button>
                         </p>
                     </div>
