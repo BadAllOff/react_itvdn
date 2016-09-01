@@ -13,7 +13,8 @@ var Note = React.createClass({
 var NoteEditor = React.createClass({
   getInitialState: function() {
     return {
-      text: ''
+      text: '',
+      color: 'red'
     };
   },
 
@@ -21,10 +22,14 @@ var NoteEditor = React.createClass({
     this.setState({ text: event.target.value });
   },
 
+  change: function(event){
+    this.setState({color: event.target.value});
+  },
+
   handleNoteAdd: function() {
     var newNote = {
       text: this.state.text,
-      color: 'yellow',
+      color: this.state.color,
       id: Date.now()
     };
 
@@ -42,11 +47,23 @@ var NoteEditor = React.createClass({
     value={this.state.text}
     onChange={this.handleTextChange}
     />
+
+          <select name="" className="note-colorpicker" onChange={this.change} value={this.state.color}>
+            <option value="red">red</option>
+            <option value="yellow">yellow</option>
+            <option value="blue">blue</option>
+            <option value="grey">grey</option>
+            <option value="green">green</option>
+            <option value="orange">orange</option>
+            <option value="white">white</option>
+          </select>
+
     <button className="add-button" onClick={this.handleNoteAdd}>Add</button>
     </div>
     );
   }
 });
+
 
 var NotesGrid = React.createClass({
   componentDidMount: function() {
