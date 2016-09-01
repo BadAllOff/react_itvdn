@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+    <script src="../../libs/react.js"></script>
+    <script src="../../libs/react-dom.js"></script>
+    <script src="../../libs/browser.js"></script>
+</head>
+<body>
+<div id='mount-point'></div>
+
+<script type="text/babel">
+    var Timer = React.createClass({
+        getInitialState: function() {
+            return {
+                seconds: 0
+            };
+        },
+
+        componentDidMount: function() {
+            this.timer = setInterval(this.tick, 1000);
+        },
+
+        tick: function() {
+            this.setState({ seconds: this.state.seconds + 1 });
+        },
+
+        resetTimer: function() {
+            this.setState({ seconds: 0 });
+        },
+
+        componentWillUnmount: function() {
+            clearInterval(this.timer);
+        },
+
+        render: function() {
+            return (
+                    <div>
+                        <h4> Уже прошло {this.state.seconds} секунд </h4>
+                        <p>
+                            <button>Старт</button>
+                            <button onClick={this.resetTimer} >Восстановить</button>
+                        </p>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <Timer />,
+            document.getElementById('mount-point')
+    );
+</script>
+</body>
+</html>
