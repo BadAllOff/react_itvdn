@@ -1,0 +1,56 @@
+Writing PID to tmp/pids/thin.pid
+Using rack adapter
+Exiting!
+/home/shamil/.rvm/gems/ruby-2.3.1/gems/thin-1.6.4/lib/rack/adapter/loader.rb:33:in `eval': /media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:2: syntax error, unexpected ':', expecting ')' (SyntaxError)
+chdir: "/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn"
+      ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:3: syntax error, unexpected ':', expecting ')'
+environment: development
+            ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:4: syntax error, unexpected ':', expecting ')'
+address: 0.0.0.0
+        ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:4: unexpected fraction part after numeric literal
+address: 0.0.0.0
+            ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:5: syntax error, unexpected ':', expecting ')'
+port: 3000
+     ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:6: syntax error, unexpected ':', expecting ')'
+timeout: 30
+        ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:7: syntax error, unexpected ':', expecting ')'
+log: "/media/shamil/OS1/Users/Sha...
+    ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:8: syntax error, unexpected ':', expecting ')'
+pid: tmp/pids/thin.pid
+    ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:9: syntax error, unexpected ':', expecting ')'
+max_conns: 1024
+          ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:10: syntax error, unexpected ':', expecting ')'
+max_persistent_conns: 100
+                     ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:11: syntax error, unexpected ':', expecting ')'
+require: []
+        ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:12: syntax error, unexpected ':', expecting ')'
+wait: 30
+     ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:13: syntax error, unexpected ':', expecting ')'
+threadpool_size: 20
+                ^
+/media/shamil/OS1/Users/Shamil/Documents/r/react_itvdn/config.ru:14: syntax error, unexpected ':', expecting ')'
+daemonize: true
+          ^
+	from /home/shamil/.rvm/gems/ruby-2.3.1/gems/thin-1.6.4/lib/rack/adapter/loader.rb:33:in `load'
+	from /home/shamil/.rvm/gems/ruby-2.3.1/gems/thin-1.6.4/lib/rack/adapter/loader.rb:42:in `for'
+	from /home/shamil/.rvm/gems/ruby-2.3.1/gems/thin-1.6.4/lib/thin/controllers/controller.rb:170:in `load_adapter'
+	from /home/shamil/.rvm/gems/ruby-2.3.1/gems/thin-1.6.4/lib/thin/controllers/controller.rb:74:in `start'
+	from /home/shamil/.rvm/gems/ruby-2.3.1/gems/thin-1.6.4/lib/thin/runner.rb:200:in `run_command'
+	from /home/shamil/.rvm/gems/ruby-2.3.1/gems/thin-1.6.4/lib/thin/runner.rb:156:in `run!'
+	from /home/shamil/.rvm/gems/ruby-2.3.1/gems/thin-1.6.4/bin/thin:6:in `<top (required)>'
+	from /home/shamil/.rvm/gems/ruby-2.3.1/bin/thin:23:in `load'
+	from /home/shamil/.rvm/gems/ruby-2.3.1/bin/thin:23:in `<main>'
+	from /home/shamil/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in `eval'
+	from /home/shamil/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in `<main>'
